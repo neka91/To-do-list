@@ -39,6 +39,12 @@ function App() {
     setValue(event.target.value);
   };
 
+  const handlingKeyPress = (event) => {
+    if (event.charCode === 13) {
+      addTask(event);
+    }
+  };
+
   return (
     <div className="App">
       <h1>To-do list</h1>
@@ -46,6 +52,7 @@ function App() {
         type="text"
         value={value}
         onChange={handlingChange}
+        onKeyPress={handlingKeyPress}
         placeholder="Type your new task here..."
       />
       <Button onAddition={addTask} />

@@ -75,3 +75,8 @@ input {
   border-radius: 7px;
   background-color: #ff6666;
 }
+
+.button,
+.item button :hover {
+  cursor: pointer;
+}
