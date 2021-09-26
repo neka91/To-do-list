@@ -11,7 +11,7 @@ body {
   background-color: whitesmoke;
 }
 
-.App {
+.app {
   margin: 50px auto;
   padding: 30px;
   width: 50%;
@@ -26,11 +26,11 @@ body {
   background-color: white;
 }
 
-h1 {
+.app__item_title {
   margin-bottom: 15px;
 }
 
-input {
+.app__item_input {
   margin-bottom: 15px;
   padding: 5px;
   width: 80%;
@@ -51,7 +51,7 @@ input {
   width: 85%;
 }
 
-.item {
+.tasksList__item {
   width: 85%;
   display: flex;
   justify-content: space-between;
@@ -60,13 +60,13 @@ input {
   border-bottom: 1px solid #cccccc;
 }
 
-.item li {
+.tasksList__item_li {
   width: 100%;
   min-width: 250px;
   overflow-wrap: break-word;
 }
 
-.item button {
+.tasksList__item_button {
   margin-left: 20px;
   padding: 5px;
   min-width: 35px;
@@ -77,6 +77,6 @@ input {
 }
 
 .button,
-.item button :hover {
+.tasksList__item_button :hover {
   cursor: pointer;
 }

@@ -3,7 +3,7 @@ import Button from "./components/Button";
 import TasksList from "./components/TasksList";
 
 function App() {
-  const [tasks, setTasks] = useState([
+  const initialTasks = [
     {
       id: 1,
       text: "Task 1",
@@ -16,13 +16,15 @@ function App() {
       id: 3,
       text: "Task 3",
     },
-  ]);
+  ];
+
+  const [tasks, setTasks] = useState(initialTasks);
   const [value, setValue] = useState("");
   const [newID, setNewID] = useState("");
 
   const addTask = (event) => {
     if (value) {
-      setNewID(Math.floor(Math.random() * 1000) + 1);
+      setNewID(new Date());
       const newTask = { id: newID, text: value };
       setTasks((prev) => [...prev, newTask]);
       setValue("");
@@ -31,33 +33,34 @@ function App() {
     }
   };
 
-  const handlingDelete = (id) => {
+  const handleDelete = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
-  const handlingChange = (event) => {
+  const handleChange = (event) => {
     setValue(event.target.value);
   };
 
-  const handlingKeyPress = (event) => {
+  const handleKeyPress = (event) => {
     if (event.charCode === 13) {
       addTask(event);
     }
   };
 
   return (
-    <div className="App">
-      <h1>To-do list</h1>
+    <div className="app">
+      <h1 className="app__item_title">To-do list</h1>
       <input
+        className="app__item_input"
         type="text"
         value={value}
-        onChange={handlingChange}
-        onKeyPress={handlingKeyPress}
+        onChange={handleChange}
+        onKeyPress={handleKeyPress}
         placeholder="Type your new task here..."
       />
-      <Button onAddition={addTask} />
+      <Button onAdd={addTask} />
       {tasks.length > 0 ? (
-        <TasksList tasks={tasks} onDelete={handlingDelete} />
+        <TasksList tasks={tasks} onDelete={handleDelete} />
       ) : (
         <h3>No tasks to show</h3>
       )}
